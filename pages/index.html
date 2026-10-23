@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="my first gsap animate page">
+    <title>my first gsap animate page</title>
+    <!--global css file -->
+    <link rel="stylesheet" href="../css/global.css">
+    <!-- GSAP and Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"></script>
+    <script src="../js/ScrollTrigger.js"></script>
+    <script src="../js/SplitText.js"></script>
+
+</head>
+
+<body>
+    <!-- <div class="nav-wrapper">
+        <nav>
+            <h1>Bhavin</h1>
+            <div class="nav-content">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <h2>Hello World</h2> -->
+
+<section class="section_events" id="events" aria-labelledby="events-heading" data-events>
+  <div class="padding-global">
+    <div class="container-large">
+      <div class="padding-section-large">
+        <div class="events_component">
+          <header class="events_header">
+            <span class="events_eyebrow text-style-allcaps text-color-blue" data-ev-fade>{eyebrow}</span>
+            <div class="events_header-text">
+              <h2 class="heading-style-h2" id="events-heading" data-ev-split>{heading}</h2>
+              <p class="text-size-large" data-ev-fade>{text}</p>
+            </div>
+          </header>
+ 
+          <div class="events_grid">
+            <ul class="events_row is-top" role="list">
+              {top.map((c) => (
+                <li class={`events_item is-${c.key}`}>
+                  {c.href ? (
+                    <a class={`events_card is-${c.key}`} href={c.href} data-ev-card>
+                      <span class="events_media"><img class="events_image" src={c.image} alt="" loading="lazy" decoding="async" data-ev-img /></span>
+                      <span class="events_shade"></span>
+                      <span class="events_spot"></span>
+                      <span class="events_card-content">
+                        <span class="events_index" data-ev-line>{idx(c.key)} / 06</span>
+                        <span class="events_card-title heading-style-h4" data-ev-line>{c.title}</span>
+                        <span class="events_card-text text-size-large" data-ev-line>{c.text}</span>
+                      </span>
+                    </a>
+                  ) : (
+                    <article class={`events_card is-${c.key}`} data-ev-card>
+                      <span class="events_media"><img class="events_image" src={c.image} alt="" loading="lazy" decoding="async" data-ev-img /></span>
+                      <span class="events_shade"></span>
+                      <span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>{idx(c.key)} / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>{c.title}</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>{c.text}</p>
+                      </div>
+                    </article>
+                  )}
+                </li>
+              ))}
+            </ul>
+ 
+            <ul class="events_row is-bottom" role="list">
+              {bottom.map((c) => (
+                <li class={`events_item is-${c.key}`}>
+                  {c.href ? (
+                    <a class={`events_card is-${c.key}`} href={c.href} data-ev-card>
+                      <span class="events_media"><img class="events_image" src={c.image} alt="" loading="lazy" decoding="async" data-ev-img /></span>
+                      <span class="events_shade"></span>
+                      <span class="events_spot"></span>
+                      <span class="events_card-content">
+                        <span class="events_index" data-ev-line>{idx(c.key)} / 06</span>
+                        <span class="events_card-title heading-style-h4" data-ev-line>{c.title}</span>
+                        <span class="events_card-text text-size-large" data-ev-line>{c.text}</span>
+                      </span>
+                    </a>
+                  ) : (
+                    <article class={`events_card is-${c.key}`} data-ev-card>
+                      <span class="events_media"><img class="events_image" src={c.image} alt="" loading="lazy" decoding="async" data-ev-img /></span>
+                      <span class="events_shade"></span>
+                      <span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>{idx(c.key)} / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>{c.title}</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>{c.text}</p>
+                      </div>
+                    </article>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+<script src="../js/animate.js"></script>
+
+</html>
