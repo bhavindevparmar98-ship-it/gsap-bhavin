@@ -1,13 +1,5 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/about",
-      "destination": "/pages/about"
-    },
-    {
-      "source": "/",
-      "destination": "/pages/index"
-    }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": ".",
+  "cleanUrls": true
 }
