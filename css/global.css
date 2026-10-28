@@ -2,6 +2,7 @@
   /* =====================================================
      1) CLIENT-FIRST UTILITIES (scoped under .section_channels)
      ===================================================== */
+     
   .section_channels .padding-global { width: 100%; padding-left: 5rem; padding-right: 5rem; }
   .section_channels .container-large { width: 100%; max-width: 80rem; margin-left: auto; margin-right: auto; }
   .section_channels .padding-section-large { padding-top: 6rem; padding-bottom: 6rem; }
