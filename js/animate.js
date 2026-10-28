@@ -1,3 +1,8 @@
+/* Prevent aggressive browser scroll restoration jerk on refresh */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 /* ---- Horizontal text (about page ma .Horizontal hoy tyare j chale) ---- */
 (function () {
   if (!window.gsap || !window.ScrollTrigger) { console.warn("GSAP / ScrollTrigger load nathi thayu – ../js/ path check karo."); return; }
@@ -21,17 +26,21 @@
 
 /* =====================================================
    SECTIONS.JS – Trust · Events · Contact
-   Requires global: gsap + ScrollTrigger (index.html ma load thay chhe)
+   Requires global: gsap + ScrollTrigger
    ===================================================== */
 (function () {
   if (!window.gsap || !window.ScrollTrigger) { console.warn("GSAP / ScrollTrigger load nathi thayu – path check karo."); return; }
   gsap.registerPlugin(ScrollTrigger);
 
+  ScrollTrigger.config({
+    limitCallbacks: true,
+    ignoreMobileResize: true
+  });
+
   var mm = gsap.matchMedia();
   var canHover = window.matchMedia("(hover: hover)").matches;
 
   /* ---------- helpers ---------- */
-  // heading -> words masked rise (prefix = class prefix)
   function splitWords(el) {
     var words = (el.textContent || "").trim().split(/\s+/);
     el.setAttribute("aria-label", words.join(" "));
@@ -40,13 +49,13 @@
     }).join(" ");
     return el.querySelectorAll(".ev-word-inner");
   }
-  // "90%+" -> {pre:"", num:90, dec:0, post:"%+"}
+
   function parseNum(v) {
     var m = String(v).match(/^([^\d]*)([\d.]+)(.*)$/);
     if (!m) return null;
     return { pre: m[1], num: parseFloat(m[2]), dec: (m[2].split(".")[1] || "").length, post: m[3] };
   }
-  // pointer spotlight + optional tilt
+
   function pointerFx(card, tilt) {
     if (!canHover) return;
     var setX = gsap.quickSetter(card, "--mx", "px");
@@ -70,23 +79,44 @@
     mm.add("(prefers-reduced-motion: no-preference)", function () {
       var header = trust.querySelector("[data-tr-header]");
       if (header) {
-        gsap.from(header.children, { autoAlpha: 0, y: 28, duration: 0.9, ease: "power3.out", stagger: 0.12,
-          scrollTrigger: { trigger: header, start: "top 85%", once: true } });
+        gsap.from(header.children, {
+          autoAlpha: 0,
+          y: 28,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          immediateRender: false,
+          scrollTrigger: { trigger: header, start: "top 85%", once: true }
+        });
       }
 
       // stats: rise, count up, light sweep
       var stats = gsap.utils.toArray("[data-tr-stat]", trust);
       if (stats.length) {
-        var tl = gsap.timeline({ scrollTrigger: { trigger: "[data-tr-stats]", start: "top 82%", once: true } });
-        tl.from(stats, { autoAlpha: 0, y: 40, scale: 0.96, duration: 0.8, ease: "power3.out", stagger: { each: 0.09, from: "start" } });
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: "[data-tr-stats]", start: "top 82%", once: true }
+        });
+        tl.from(stats, {
+          autoAlpha: 0,
+          y: 40,
+          scale: 0.96,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: { each: 0.09, from: "start" },
+          immediateRender: false
+        });
         stats.forEach(function (card, i) {
           var numEl = card.querySelector("[data-tr-count]");
           var p = numEl ? parseNum(numEl.dataset.trCount || "") : null;
           if (numEl && p) {
             var o = { v: 0 };
-            tl.to(o, { v: p.num, duration: 1.8, ease: "power2.out",
+            tl.to(o, {
+              v: p.num,
+              duration: 1.8,
+              ease: "power2.out",
               onUpdate: function () { numEl.textContent = p.pre + o.v.toFixed(p.dec) + p.post; },
-              onComplete: function () { numEl.textContent = p.pre + p.num.toFixed(p.dec) + p.post; } }, 0.15 + i * 0.09);
+              onComplete: function () { numEl.textContent = p.pre + p.num.toFixed(p.dec) + p.post; }
+            }, 0.15 + i * 0.09);
           }
           tl.fromTo(card, { "--sweep": "-120%", "--sweep-o": 1 }, { "--sweep": "120%", duration: 1.1, ease: "power2.inOut" }, 0.5 + i * 0.09)
             .to(card, { "--sweep-o": 0, duration: 0.01 }, ">");
@@ -96,13 +126,25 @@
       // badges: stamp in + icon outline draws itself
       var badges = gsap.utils.toArray("[data-tr-badge]", trust);
       if (badges.length) {
-        var tlb = gsap.timeline({ scrollTrigger: { trigger: "[data-tr-badges]", start: "top 88%", once: true } });
-        tlb.from(badges, { autoAlpha: 0, x: -24, duration: 0.7, ease: "power3.out", stagger: 0.08 });
+        var tlb = gsap.timeline({
+          scrollTrigger: { trigger: "[data-tr-badges]", start: "top 88%", once: true }
+        });
+        tlb.from(badges, {
+          autoAlpha: 0,
+          x: -24,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.08,
+          immediateRender: false
+        });
         badges.forEach(function (b, i) {
           b.querySelectorAll("svg path").forEach(function (path) {
-            var len = path.getTotalLength();
-            gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-            tlb.to(path, { strokeDashoffset: 0, duration: 1, ease: "power2.inOut" }, 0.2 + i * 0.08);
+            var len = path.getTotalLength ? path.getTotalLength() : 80;
+            tlb.fromTo(path,
+              { strokeDasharray: len, strokeDashoffset: len },
+              { strokeDashoffset: 0, duration: 1, ease: "power2.inOut" },
+              0.2 + i * 0.08
+            );
           });
         });
       }
@@ -112,8 +154,8 @@
       var reviews = gsap.utils.toArray("[data-tr-review]", trust);
       if (reviews.length) {
         var tlr = gsap.timeline({ scrollTrigger: { trigger: "[data-tr-reviews]", start: "top 92%", once: true } });
-        if (story) tlr.from(story, { autoAlpha: 0, y: 14, duration: 0.6, ease: "power2.out" });
-        tlr.from(reviews, { autoAlpha: 0, y: 22, duration: 0.6, ease: "power3.out", stagger: 0.1 }, story ? "-=0.2" : 0);
+        if (story) tlr.from(story, { autoAlpha: 0, y: 14, duration: 0.6, ease: "power2.out", immediateRender: false });
+        tlr.from(reviews, { autoAlpha: 0, y: 22, duration: 0.6, ease: "power3.out", stagger: 0.1, immediateRender: false }, story ? "-=0.2" : 0);
         reviews.forEach(function (r, i) {
           var sc = r.querySelector("[data-tr-rating]");
           var star = r.querySelector("[data-tr-star]");
@@ -138,23 +180,46 @@
       if (head) {
         var inner = splitWords(head);
         gsap.timeline({ scrollTrigger: { trigger: head, start: "top 85%", once: true } })
-          .from(fades[0], { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out" })
-          .from(inner, { yPercent: 110, rotate: 4, duration: 0.9, ease: "expo.out", stagger: 0.07 }, "-=0.25")
-          .from(fades[1], { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out" }, "-=0.5");
+          .from(fades[0], { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out", immediateRender: false })
+          .from(inner, { yPercent: 110, rotate: 4, duration: 0.9, ease: "expo.out", stagger: 0.07, immediateRender: false }, "-=0.25")
+          .from(fades[1], { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out", immediateRender: false }, "-=0.5");
       }
 
       events.querySelectorAll("[data-ev-card]").forEach(function (card) {
         var img = card.querySelector("[data-ev-img]");
         var lines = card.querySelectorAll("[data-ev-line]");
-        gsap.set(card, { clipPath: "inset(100% 0% 0% 0% round 8px)" });
-        gsap.timeline({ scrollTrigger: { trigger: card, start: "top 88%", once: true } })
-          .to(card, { clipPath: "inset(0% 0% 0% 0% round 8px)", duration: 1.1, ease: "expo.inOut" })
-          .from(img, { scale: 1.25, duration: 1.4, ease: "expo.out" }, 0)
-          .from(lines, { autoAlpha: 0, y: 24, duration: 0.7, ease: "power3.out", stagger: 0.09 }, 0.55);
+        
+        var cardTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 88%",
+            once: true
+          }
+        });
+
+        cardTl.fromTo(card,
+          { clipPath: "inset(100% 0% 0% 0% round 8px)" },
+          { clipPath: "inset(0% 0% 0% 0% round 8px)", duration: 1.1, ease: "expo.inOut", immediateRender: false }
+        )
+        .fromTo(img,
+          { scale: 1.25 },
+          { scale: 1, duration: 1.4, ease: "expo.out", immediateRender: false },
+          0
+        )
+        .from(lines, {
+          autoAlpha: 0,
+          y: 24,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.09,
+          immediateRender: false
+        }, 0.55);
 
         if (img) {
-          gsap.fromTo(img, { yPercent: -5 }, { yPercent: 5, ease: "none",
-            scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: 0.6 } });
+          gsap.fromTo(img,
+            { yPercent: -5 },
+            { yPercent: 5, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: 0.6 } }
+          );
         }
         pointerFx(card, false);
       });
@@ -215,20 +280,29 @@
       if (head) {
         var words = splitWords(head);
         gsap.timeline({ scrollTrigger: { trigger: head, start: "top 85%", once: true } })
-          .from(fades[0], { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out" })
-          .from(words, { yPercent: 110, rotate: 4, duration: 0.9, ease: "expo.out", stagger: 0.06 }, "-=0.25")
-          .from(fades[1], { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out" }, "-=0.55")
-          .from(fades[2], { autoAlpha: 0, scale: 0.8, y: 10, duration: 0.7, ease: "back.out(2)" }, "-=0.4");
+          .from(fades[0], { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out", immediateRender: false })
+          .from(words, { yPercent: 110, rotate: 4, duration: 0.9, ease: "expo.out", stagger: 0.06, immediateRender: false }, "-=0.25")
+          .from(fades[1], { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out", immediateRender: false }, "-=0.55")
+          .from(fades[2], { autoAlpha: 0, scale: 0.8, y: 10, duration: 0.7, ease: "back.out(2)", immediateRender: false }, "-=0.4");
       }
 
       // cards: rise + unfold, icon draws, mail text scrambles in
       var cards = gsap.utils.toArray("[data-ct-card]", contact);
       var chars = "abcdefghijklmnopqrstuvwxyz@._";
       var tl = gsap.timeline({ scrollTrigger: { trigger: "[data-ct-grid]", start: "top 85%", once: true } });
-      tl.from(cards, { autoAlpha: 0, y: 70, rotationX: -18, transformOrigin: "50% 100%", duration: 1, ease: "expo.out", stagger: 0.12 });
+      tl.from(cards, {
+        autoAlpha: 0,
+        y: 70,
+        rotationX: -18,
+        transformOrigin: "50% 100%",
+        duration: 1,
+        ease: "expo.out",
+        stagger: 0.12,
+        immediateRender: false
+      });
       cards.forEach(function (card, i) {
         var lines = card.querySelectorAll("[data-ct-line]");
-        tl.from(lines, { autoAlpha: 0, y: 16, duration: 0.6, ease: "power3.out", stagger: 0.08 }, 0.3 + i * 0.12);
+        tl.from(lines, { autoAlpha: 0, y: 16, duration: 0.6, ease: "power3.out", stagger: 0.08, immediateRender: false }, 0.3 + i * 0.12);
 
         card.querySelectorAll("[data-ct-icon] path, [data-ct-icon] circle").forEach(function (shape) {
           var len = shape.getTotalLength ? shape.getTotalLength() : 60;
@@ -246,6 +320,16 @@
           }, onComplete: function () { t.textContent = final; } }, 0.5 + i * 0.12);
         }
       });
+    });
+  }
+
+  // Refresh ScrollTrigger smoothly once all fonts and images are ready
+  window.addEventListener("load", function () {
+    ScrollTrigger.refresh();
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      ScrollTrigger.refresh();
     });
   }
 })();
