@@ -10,9 +10,50 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
 
-<style>*,*::before,*::after{box-sizing:border-box}body{margin:0;-webkit-font-smoothing:antialiased}</style>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;-webkit-font-smoothing:antialiased}
+  .site-nav {
+    background: #0b2231;
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-logo {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  .site-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .site-link {
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .site-link:hover, .site-link.active {
+    color: #38bdf8;
+  }
+</style>
 </head>
 <body>
+
+<header class="site-nav">
+  <a href="/" class="site-logo">Bhavin GSAP</a>
+  <nav class="site-links">
+    <a href="/" class="site-link">Events</a>
+    <a href="/about" class="site-link active">About (Trust · Events · Contact)</a>
+  </nav>
+</header>
  
 <!-- ================= 1) TRUST ================= -->
 <section class="section_trust" id="trust" aria-labelledby="trust-heading" data-trust>
@@ -108,7 +149,7 @@
         <ul class="events_row is-top" role="list">
           <li class="events_item is-fireside">
             <article class="events_card is-fireside" data-ev-card>
-              <span class="events_media"><img class="events_image" src="../assets/vision-img-1.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_media"><img class="events_image" src="/assets/vision-img-1.jpg" alt="" loading="lazy" data-ev-img></span>
               <span class="events_shade"></span><span class="events_spot"></span>
               <div class="events_card-content">
                 <span class="events_index" data-ev-line>01 / 06</span>
@@ -119,7 +160,7 @@
           </li>
           <li class="events_item is-webinars">
             <article class="events_card is-webinars" data-ev-card>
-              <span class="events_media"><img class="events_image" src="../assets/mission-img-2.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_media"><img class="events_image" src="/assets/mission-img-2.jpg" alt="" loading="lazy" data-ev-img></span>
               <span class="events_shade"></span><span class="events_spot"></span>
               <div class="events_card-content">
                 <span class="events_index" data-ev-line>02 / 06</span>
@@ -130,7 +171,7 @@
           </li>
           <li class="events_item is-podcasts">
             <article class="events_card is-podcasts" data-ev-card>
-              <span class="events_media"><img class="events_image" src="../assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
               <span class="events_shade"></span><span class="events_spot"></span>
               <div class="events_card-content">
                 <span class="events_index" data-ev-line>03 / 06</span>
@@ -141,7 +182,7 @@
           </li>
           <li class="events_item is-hackathons">
             <article class="events_card is-hackathons" data-ev-card>
-              <span class="events_media"><img class="events_image" src="../assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
               <span class="events_shade"></span><span class="events_spot"></span>
               <div class="events_card-content">
                 <span class="events_index" data-ev-line>04 / 06</span>

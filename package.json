@@ -1,0 +1,17 @@
+{
+  "name": "gsap-bhavin",
+  "version": "1.0.0",
+  "description": "GSAP Animation Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "gsap",
+    "scrolltrigger",
+    "animation"
+  ],
+  "author": "Bhavin",
+  "license": "ISC"
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="my first gsap animate page">
+    <title>my first gsap animate page</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; -webkit-font-smoothing: antialiased; }
+      .site-nav {
+        background: #0b2231;
+        padding: 1rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .site-logo {
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        text-decoration: none;
+      }
+      .site-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .site-link {
+        color: #94a3b8;
+        font-family: 'Inter', sans-serif;
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+      .site-link:hover, .site-link.active {
+        color: #38bdf8;
+      }
+    </style>
+</head>
+
+<body>
+    <header class="site-nav">
+      <a href="/" class="site-logo">Bhavin GSAP</a>
+      <nav class="site-links">
+        <a href="/" class="site-link active">Events</a>
+        <a href="/about" class="site-link">About (Trust · Events · Contact)</a>
+      </nav>
+    </header>
+
+    <section class="section_events" id="events" aria-labelledby="events-heading" data-events>
+      <div class="padding-global">
+        <div class="container-large">
+          <div class="padding-section-large">
+            <div class="events_component">
+              <header class="events_header">
+                <span class="events_eyebrow text-style-allcaps text-color-blue" data-ev-fade>Our Events types</span>
+                <div class="events_header-text">
+                  <h2 class="heading-style-h2 text-color-dark" id="events-heading" data-ev-split>Events by Engineers, for Engineers</h2>
+                  <p class="text-size-large text-align-center text-color-grey" data-ev-fade>Be part of our upcoming live events, whether in your city or streamed directly to you.</p>
+                </div>
+              </header>
+     
+              <div class="events_grid">
+                <ul class="events_row is-top" role="list">
+                  <li class="events_item is-fireside">
+                    <article class="events_card is-fireside" data-ev-card>
+                      <span class="events_media"><img class="events_image" src="/assets/vision-img-1.jpg" alt="Fireside Chat" loading="lazy" data-ev-img></span>
+                      <span class="events_shade"></span><span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>01 / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>Fireside Chat</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>Casual conversations with leaders in quality engineering.</p>
+                      </div>
+                    </article>
+                  </li>
+                  <li class="events_item is-webinars">
+                    <article class="events_card is-webinars" data-ev-card>
+                      <span class="events_media"><img class="events_image" src="/assets/mission-img-2.jpg" alt="Webinars" loading="lazy" data-ev-img></span>
+                      <span class="events_shade"></span><span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>02 / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>Webinars</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>Live sessions on trends, tools, and best practices.</p>
+                      </div>
+                    </article>
+                  </li>
+                  <li class="events_item is-podcasts">
+                    <article class="events_card is-podcasts" data-ev-card>
+                      <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="Podcasts" loading="lazy" data-ev-img></span>
+                      <span class="events_shade"></span><span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>03 / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>Podcasts</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>Conversations on quality engineering, wherever you are.</p>
+                      </div>
+                    </article>
+                  </li>
+                  <li class="events_item is-hackathons">
+                    <article class="events_card is-hackathons" data-ev-card>
+                      <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="Hackathons" loading="lazy" data-ev-img></span>
+                      <span class="events_shade"></span><span class="events_spot"></span>
+                      <div class="events_card-content">
+                        <span class="events_index" data-ev-line>04 / 06</span>
+                        <h3 class="events_card-title heading-style-h4" data-ev-line>Hackathons</h3>
+                        <p class="events_card-text text-size-large" data-ev-line>Build, break, and innovate alongside our community.</p>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GSAP scripts: GSAP first, then plugins, then animate.js -->
+    <script src="/js/gsap.min.js"></script>
+    <script src="/js/ScrollTrigger.js"></script>
+    <script src="/js/SplitText.js"></script>
+    <script src="/js/animate.js"></script>
+</body>
+</html>
