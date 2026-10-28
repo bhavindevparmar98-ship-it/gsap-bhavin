@@ -1,133 +1,307 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="my first gsap animate page">
-    <title>my first gsap animate page</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="/css/global.css">
-    <style>
-      *, *::before, *::after { box-sizing: border-box; }
-      body { margin: 0; -webkit-font-smoothing: antialiased; }
-      .site-nav {
-        background: #0b2231;
-        padding: 1rem 2.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .site-logo {
-        color: #ffffff;
-        font-family: 'Inter', sans-serif;
-        font-weight: 700;
-        font-size: 1.25rem;
-        text-decoration: none;
-      }
-      .site-links {
-        display: flex;
-        gap: 1.5rem;
-      }
-      .site-link {
-        color: #94a3b8;
-        font-family: 'Inter', sans-serif;
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: color 0.2s ease;
-      }
-      .site-link:hover, .site-link.active {
-        color: #38bdf8;
-      }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About – Trust · Events · Contact</title>
+<link rel="stylesheet" href="/css/global.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;-webkit-font-smoothing:antialiased}
+  .site-nav {
+    background: #0b2231;
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .site-logo {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+  }
+  .site-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .site-link {
+    color: #94a3b8;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .site-link:hover, .site-link.active {
+    color: #38bdf8;
+  }
+</style>
 </head>
-
 <body>
-    <header class="site-nav">
-      <a href="/" class="site-logo">Bhavin GSAP</a>
-      <nav class="site-links">
-        <a href="/" class="site-link active">Home</a>
-        <a href="/about" class="site-link">About</a>
-      </nav>
-    </header>
 
-    <section class="section_events" id="events" aria-labelledby="events-heading" data-events>
-      <div class="padding-global">
-        <div class="container-large">
-          <div class="padding-section-large">
-            <div class="events_component">
-              <header class="events_header">
-                <span class="events_eyebrow text-style-allcaps text-color-blue" data-ev-fade>Our Events types</span>
-                <div class="events_header-text">
-                  <h2 class="heading-style-h2 text-color-dark" id="events-heading" data-ev-split>Events by Engineers, for Engineers</h2>
-                  <p class="text-size-large text-align-center text-color-grey" data-ev-fade>Be part of our upcoming live events, whether in your city or streamed directly to you.</p>
-                </div>
-              </header>
-     
-              <div class="events_grid">
-                <ul class="events_row is-top" role="list">
-                  <li class="events_item is-fireside">
-                    <article class="events_card is-fireside" data-ev-card>
-                      <span class="events_media"><img class="events_image" src="/assets/vision-img-1.jpg" alt="Fireside Chat" loading="lazy" data-ev-img></span>
-                      <span class="events_shade"></span><span class="events_spot"></span>
-                      <div class="events_card-content">
-                        <span class="events_index" data-ev-line>01 / 06</span>
-                        <h3 class="events_card-title heading-style-h4" data-ev-line>Fireside Chat</h3>
-                        <p class="events_card-text text-size-large" data-ev-line>Casual conversations with leaders in quality engineering.</p>
-                      </div>
-                    </article>
-                  </li>
-                  <li class="events_item is-webinars">
-                    <article class="events_card is-webinars" data-ev-card>
-                      <span class="events_media"><img class="events_image" src="/assets/mission-img-2.jpg" alt="Webinars" loading="lazy" data-ev-img></span>
-                      <span class="events_shade"></span><span class="events_spot"></span>
-                      <div class="events_card-content">
-                        <span class="events_index" data-ev-line>02 / 06</span>
-                        <h3 class="events_card-title heading-style-h4" data-ev-line>Webinars</h3>
-                        <p class="events_card-text text-size-large" data-ev-line>Live sessions on trends, tools, and best practices.</p>
-                      </div>
-                    </article>
-                  </li>
-                  <li class="events_item is-podcasts">
-                    <article class="events_card is-podcasts" data-ev-card>
-                      <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="Podcasts" loading="lazy" data-ev-img></span>
-                      <span class="events_shade"></span><span class="events_spot"></span>
-                      <div class="events_card-content">
-                        <span class="events_index" data-ev-line>03 / 06</span>
-                        <h3 class="events_card-title heading-style-h4" data-ev-line>Podcasts</h3>
-                        <p class="events_card-text text-size-large" data-ev-line>Conversations on quality engineering, wherever you are.</p>
-                      </div>
-                    </article>
-                  </li>
-                  <li class="events_item is-hackathons">
-                    <article class="events_card is-hackathons" data-ev-card>
-                      <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="Hackathons" loading="lazy" data-ev-img></span>
-                      <span class="events_shade"></span><span class="events_spot"></span>
-                      <div class="events_card-content">
-                        <span class="events_index" data-ev-line>04 / 06</span>
-                        <h3 class="events_card-title heading-style-h4" data-ev-line>Hackathons</h3>
-                        <p class="events_card-text text-size-large" data-ev-line>Build, break, and innovate alongside our community.</p>
-                      </div>
-                    </article>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+<header class="site-nav">
+  <a href="/" class="site-logo">Bhavin GSAP</a>
+  <nav class="site-links">
+    <a href="/" class="site-link">Events</a>
+    <a href="/about" class="site-link active">About (Trust · Events · Contact)</a>
+  </nav>
+</header>
+ 
+<!-- ================= 1) TRUST ================= -->
+<section class="section_trust" id="trust" aria-labelledby="trust-heading" data-trust>
+  <div class="padding-global"><div class="container-large"><div class="padding-section-large">
+    <div class="trust_component">
+      <header class="trust_header" data-tr-header>
+        <span class="text-style-allcaps text-color-teal">Trust &amp; credibility</span>
+        <div class="trust_header-text">
+          <h2 class="heading-style-h2 text-color-white" id="trust-heading">Why teams take the call.</h2>
+          <p class="text-size-large text-align-center text-color-light">Ranked #3 among 900+ testing companies worldwide, with 2,000+ person-years of testing expertise behind the platform.</p>
         </div>
+      </header>
+      <div class="trust_content">
+        <div class="trust_body">
+          <ul class="trust_stats" role="list" data-tr-stats>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="90%+">90%+</p>
+                <p class="trust_stat-label text-style-allcaps">Test coverage</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="15X">15X</p>
+                <p class="trust_stat-label text-style-allcaps">Productivity boost</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="80%">80%</p>
+                <p class="trust_stat-label text-style-allcaps">Lower cost</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="3X+">3X+</p>
+                <p class="trust_stat-label text-style-allcaps">ROI</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="96">96</p>
+                <p class="trust_stat-label text-style-allcaps">SaaS NPS</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="94">94</p>
+                <p class="trust_stat-label text-style-allcaps">Enterprise NPS</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="#3">#3</p>
+                <p class="trust_stat-label text-style-allcaps">Ranked globally</p>
+              </li>
+              <li class="trust_stat" data-tr-stat>
+                <p class="trust_stat-number heading-style-display" data-tr-count="900+">900+</p>
+                <p class="trust_stat-label text-style-allcaps">Testing companies</p>
+              </li>
+          </ul>
+          <ul class="trust_badges" role="list" data-tr-badges>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">ISO 27001</span>
+              </li>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">SOC 2 Type II</span>
+              </li>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">ISO 9001</span>
+              </li>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">IEC 62304</span>
+              </li>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">ISO 14971</span>
+              </li>
+              <li class="trust_badge" data-tr-badge>
+                <svg class="trust_badge-icon" viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 4 7 9v10c0 8 5.5 14 13 17 7.5-3 13-9 13-17V9z"/><path d="m14 20 4.5 4.5L27 15.5"/></svg>
+                <span class="trust_badge-text heading-style-h6">SSO + SAML</span>
+              </li>
+          </ul>
+        </div>      
       </div>
-    </section>
-
-    <!-- GSAP scripts: GSAP first, then plugins, then animate.js -->
-    <script src="/js/gsap.min.js"></script>
-    <script src="/js/ScrollTrigger.js"></script>
-    <script src="/js/SplitText.js"></script>
-    <script src="/js/animate.js"></script>
+    </div>
+  </div></div></div>
+</section>
+ 
+<!-- ================= 2) EVENTS ================= -->
+<section class="section_events" id="events" aria-labelledby="events-heading" data-events>
+  <div class="padding-global"><div class="container-large"><div class="padding-section-large">
+    <div class="events_component">
+      <header class="events_header">
+        <span class="text-style-allcaps text-color-blue" data-ev-fade>Our Events types</span>
+        <div class="events_header-text">
+          <h2 class="heading-style-h2 text-color-dark" id="events-heading" data-ev-split>Events by Engineers, for Engineers</h2>
+          <p class="text-size-large text-align-center text-color-grey" data-ev-fade>Be part of our upcoming live events, whether in your city or streamed directly to you.</p>
+        </div>
+      </header>
+      <div class="events_grid">
+        <ul class="events_row is-top" role="list">
+          <li class="events_item is-fireside">
+            <article class="events_card is-fireside" data-ev-card>
+              <span class="events_media"><img class="events_image" src="/assets/vision-img-1.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_shade"></span><span class="events_spot"></span>
+              <div class="events_card-content">
+                <span class="events_index" data-ev-line>01 / 06</span>
+                <h3 class="events_card-title heading-style-h4" data-ev-line>Fireside Chat</h3>
+                <p class="events_card-text text-size-large" data-ev-line>Casual conversations with leaders in quality engineering.</p>
+              </div>
+            </article>
+          </li>
+          <li class="events_item is-webinars">
+            <article class="events_card is-webinars" data-ev-card>
+              <span class="events_media"><img class="events_image" src="/assets/mission-img-2.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_shade"></span><span class="events_spot"></span>
+              <div class="events_card-content">
+                <span class="events_index" data-ev-line>02 / 06</span>
+                <h3 class="events_card-title heading-style-h4" data-ev-line>Webinars</h3>
+                <p class="events_card-text text-size-large" data-ev-line>Live sessions on trends, tools, and best practices.</p>
+              </div>
+            </article>
+          </li>
+          <li class="events_item is-podcasts">
+            <article class="events_card is-podcasts" data-ev-card>
+              <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_shade"></span><span class="events_spot"></span>
+              <div class="events_card-content">
+                <span class="events_index" data-ev-line>03 / 06</span>
+                <h3 class="events_card-title heading-style-h4" data-ev-line>Podcasts</h3>
+                <p class="events_card-text text-size-large" data-ev-line>Conversations on quality engineering, wherever you are.</p>
+              </div>
+            </article>
+          </li>
+          <li class="events_item is-hackathons">
+            <article class="events_card is-hackathons" data-ev-card>
+              <span class="events_media"><img class="events_image" src="/assets/goal-img-3.jpg" alt="" loading="lazy" data-ev-img></span>
+              <span class="events_shade"></span><span class="events_spot"></span>
+              <div class="events_card-content">
+                <span class="events_index" data-ev-line>04 / 06</span>
+                <h3 class="events_card-title heading-style-h4" data-ev-line>Hackathons</h3>
+                <p class="events_card-text text-size-large" data-ev-line>Build, break, and innovate alongside our community.</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </div></div></div>
+</section>
+ 
+<!-- ================= 3) CONTACT / DIRECT LINES (Figma: 04 Product tour) ================= -->
+<section class="section_contact" id="contact" aria-labelledby="contact-heading" data-contact>
+  <span class="contact_orb is-blue" data-ct-orb aria-hidden="true"></span>
+  <span class="contact_orb is-teal" data-ct-orb aria-hidden="true"></span>
+  <div class="padding-global"><div class="container-large"><div class="padding-section-large">
+    <div class="contact_component">
+      <header class="contact_header">
+        <div class="contact_eyebrow-wrap" data-ct-fade>
+          <span class="text-style-allcaps text-color-blue">Direct lines</span>
+        </div>
+        <div class="contact_header-text">
+          <h2 class="heading-style-h2 text-color-dark" id="contact-heading" data-ct-split>Four inboxes, four teams, no runaround.</h2>
+          <p class="text-size-large text-color-grey" data-ct-fade>Every address below is monitored during business hours in India and the United States.</p>
+        </div>
+        <span class="contact_status" data-ct-fade data-ct-status aria-live="polite"><span class="contact_status-dot"></span><span data-ct-status-text>Checking team availability…</span></span>
+      </header>
+      <ul class="contact_grid" role="list" data-ct-grid>
+          <li class="contact_item">
+            <article class="contact_card" data-ct-card>
+              <div class="contact_card-top">
+                <div class="contact_card-head">
+                  <svg class="contact_icon" data-ct-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>
+                  <span class="contact_index">01</span>
+                </div>
+                <h3 class="contact_card-title heading-style-h4" data-ct-line>Sales</h3>
+                <p class="contact_card-text text-size-regular" data-ct-line>Pricing, licensing, proof of concept and procurement paperwork.</p>
+              </div>
+              <div class="contact_card-bottom" data-ct-line>
+                <a class="contact_mail" href="mailto:sales@algoshack.com" data-ct-mail="sales@algoshack.com"><span data-ct-mail-text>sales@algoshack.com</span><svg class="contact_arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5"/></svg></a>
+                <button class="contact_copy" type="button" data-ct-copy="sales@algoshack.com" aria-label="Copy sales@algoshack.com">Copy</button>
+              </div>
+            </article>
+          </li>
+          <li class="contact_item">
+            <article class="contact_card" data-ct-card>
+              <div class="contact_card-top">
+                <div class="contact_card-head">
+                  <svg class="contact_icon" data-ct-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg>
+                  <span class="contact_index">02</span>
+                </div>
+                <h3 class="contact_card-title heading-style-h4" data-ct-line>General enquiries</h3>
+                <p class="contact_card-text text-size-regular" data-ct-line>Anything that doesn't fit a box, plus press and analyst requests.</p>
+              </div>
+              <div class="contact_card-bottom" data-ct-line>
+                <a class="contact_mail" href="mailto:info@algoshack.com" data-ct-mail="info@algoshack.com"><span data-ct-mail-text>info@algoshack.com</span><svg class="contact_arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5"/></svg></a>
+                <button class="contact_copy" type="button" data-ct-copy="info@algoshack.com" aria-label="Copy info@algoshack.com">Copy</button>
+              </div>
+            </article>
+          </li>
+          <li class="contact_item">
+            <article class="contact_card" data-ct-card>
+              <div class="contact_card-top">
+                <div class="contact_card-head">
+                  <svg class="contact_icon" data-ct-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6"/><path d="M16 5.2a3.2 3.2 0 010 5.6M18 14.3c2 .8 3 2.7 3 5.7"/></svg>
+                  <span class="contact_index">03</span>
+                </div>
+                <h3 class="contact_card-title heading-style-h4" data-ct-line>People &amp; HR</h3>
+                <p class="contact_card-text text-size-regular" data-ct-line>Current employees, contractors, benefits and policy questions.</p>
+              </div>
+              <div class="contact_card-bottom" data-ct-line>
+                <a class="contact_mail" href="mailto:hr@algoshack.com" data-ct-mail="hr@algoshack.com"><span data-ct-mail-text>hr@algoshack.com</span><svg class="contact_arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5"/></svg></a>
+                <button class="contact_copy" type="button" data-ct-copy="hr@algoshack.com" aria-label="Copy hr@algoshack.com">Copy</button>
+              </div>
+            </article>
+          </li>
+          <li class="contact_item">
+            <article class="contact_card" data-ct-card>
+              <div class="contact_card-top">
+                <div class="contact_card-head">
+                  <svg class="contact_icon" data-ct-icon viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/><path d="M8.5 11.2l1.800 1.800 3.200-3.600"/></svg>
+                  <span class="contact_index">04</span>
+                </div>
+                <h3 class="contact_card-title heading-style-h4" data-ct-line>Recruitment</h3>
+                <p class="contact_card-text text-size-regular" data-ct-line>Open roles, applications and campus hiring across both offices.</p>
+              </div>
+              <div class="contact_card-bottom" data-ct-line>
+                <a class="contact_mail" href="mailto:recruitment@algoshack.com" data-ct-mail="recruitment@algoshack.com"><span data-ct-mail-text>recruitment@algoshack.com</span><svg class="contact_arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M5.5 4H12v6.5"/></svg></a>
+                <button class="contact_copy" type="button" data-ct-copy="recruitment@algoshack.com" aria-label="Copy recruitment@algoshack.com">Copy</button>
+              </div>
+            </article>
+          </li>
+      </ul>
+    </div>
+  </div></div></div>
+</section>
+ 
+<!-- GSAP: pehla gsap, pachi plugins, chhelle animate.js (order important) -->
+<script src="/js/gsap.min.js"></script>
+<script src="/js/ScrollTrigger.js"></script>
+<script src="/js/SplitText.js"></script>
+<script src="/js/animate.js"></script>
 </body>
 </html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
